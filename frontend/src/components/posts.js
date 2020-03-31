@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import AppNavbar from "./AppNavBar";
 import {Button, CardText, Col, Spinner} from "reactstrap";
 import Moment from 'moment';
-import {blue} from "color-name";
 
 class Posts extends Component {
 
