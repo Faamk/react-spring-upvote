@@ -2,7 +2,7 @@ FROM node:8-alpine
 
 RUN apk add --update
 
-COPY . /frontend
+ADD . / frontend/
 WORKDIR /frontend
 
 ENV PATH /frontend/node_modules/.bin:$PATH

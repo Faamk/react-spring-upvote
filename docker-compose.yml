@@ -23,7 +23,7 @@ services:
 
   upvote-spring:
     volumes: 
-      - ./server:/upvote
+      - ./upvote:/upvote
     working_dir: /upvote
 
     build: ./upvote
