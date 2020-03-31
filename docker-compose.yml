@@ -38,9 +38,6 @@ services:
 
   upvote-front:
     stdin_open: true
-    volumes:
-      - ./app:/frontend
-    working_dir: /frontend
     build: ./frontend
     depends_on: 
      - upvote-spring
