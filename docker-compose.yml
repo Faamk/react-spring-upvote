@@ -23,7 +23,7 @@ services:
 
   upvote-spring:
     volumes: 
-      - ./upvote:/upvote
+      - ./server:/upvote
     working_dir: /upvote
 
     build: ./upvote
@@ -39,7 +39,7 @@ services:
   upvote-front:
     stdin_open: true
     volumes:
-      - ./frontend:/frontend
+      - ./app:/frontend
     working_dir: /frontend
     build: ./frontend
     depends_on: 
