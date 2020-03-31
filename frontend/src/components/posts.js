@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import AppNavbar from "./AppNavBar";
-import {Button, CardText, Col, Spinner} from "reactstrap";
+import {Button, Card, CardText, Col, Spinner} from "reactstrap";
 import Moment from 'moment';
 
 class Posts extends Component {
@@ -65,9 +65,9 @@ class Posts extends Component {
                         <h5 >{post.user}</h5>
                         <label >às {Moment(post.date).format(' h:mm:ss a, DD/MM/YYYY')}:</label>
                         <Col sm="6">
-                        <card  body style={{backgroundColor:'#878787'}}>
+                        <Card  body style={{backgroundColor:'#878787'}}>
                             <CardText style={{ color: 'white' }}>{post.text}</CardText>
-                        </card>
+                        </Card>
                         </Col>
                         <h5>Upvotes: {post.upvotes}</h5>
                         <Button onClick={() => this.upvote(post.id)}>Upvote</Button>
