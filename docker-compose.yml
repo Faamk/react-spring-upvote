@@ -1,0 +1,48 @@
+version: '2.1'
+
+services:
+
+  db:
+    image: mysql
+    ports:
+      - 3306:3306
+    expose:
+      - '3306'
+    volumes:
+      - ./mysql:/my-sql
+    environment:
+      MYSQL_ROOT_PASSWORD: senha
+      MYSQL_USER: springuser
+      MYSQL_PASSWORD: senha
+      MYSQL_DATABASE: posts
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+
+  upvote-spring:
+    volumes: 
+      - ./upvote:/upvote
+    working_dir: /upvote
+
+    build: ./upvote
+
+    command: make
+
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - 8080:8080
+
+  upvote-front:
+    stdin_open: true
+    volumes:
+      - ./frontend:/frontend
+    working_dir: /frontend
+    build: ./frontend
+    depends_on: 
+     - upvote-spring
+    ports:
+      - 3000:3000
